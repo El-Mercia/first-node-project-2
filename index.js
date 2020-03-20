@@ -9,8 +9,10 @@ app.listen(3000, () => {
 
 app.get("/", (req, res) => {
 	console.log("access to / path");
-	const html = fs.readFileSync("./src/index.html");
-		
+	const html = fs
+		.readFileSync("./src/index.html")
+		.toString("utf8");
+	
 	res.send(html);
 });
 
