@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 
 const app = express();
 
@@ -8,20 +9,12 @@ app.listen(3000, () => {
 
 app.get("/", (req, res) => {
 	console.log("access to / path");
-	res.send("hello world !");
+	const html = fs.readFileSync("./src/index.html");
+		
+	res.send(html);
 });
 
-app.get("/", (req, res) => {
-	console.log("access to / path");
-	res.send(`
-		<!DOCTYPE html>
-		<html>
-			<head>
-				<title>Project-2></title>
-			</head>
-			<body>
-				<h1>Hello world !</h1>
-			</body>
-		</html>
-	`);
+app.get("/about", (req, res) => {
+	res.send("about");
 });
+
